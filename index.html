@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<style>
+    html {
+        height: 100vh;
+    }
+    body {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: 1fr auto;
+    }
+    .footer {
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+</style>
+<html lang="es"><head>
+  <meta charset="utf-8">
+  <title>VISUALIZACIÓN DE SEÑAL EN REALIDAD VIRTUAL</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" property="og:description" content="Trabajo Fin de Grado 'Visualización de Señal en Realidad Virtual'">
+  <meta name="image" property="og:image" content="/">
+  <meta name="author" content="Jaime Moraleda Gutiérrez">
+  <meta name="generator" content="Hugo 0.110.0">
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/css/uikit.min.css ">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/JaimeGuti/TFG_WEB/css/style.min.css" integrity="" media="screen">
+  
+  <link rel="stylesheet" href="/JaimeGuti/TFG_WEB/css/syntax.min.css" integrity="" media="screen">
+
+  <link rel="alternate" type="application/rss+xml" href="https://github.com/JaimeGuti/TFG_WEB/index.xml" title="VISUALIZACIÓN DE SEÑAL EN REALIDAD VIRTUAL" />
+<script src="https://cdn.jsdelivr.net/npm/mailgo@0.9.14/dist/mailgo.min.js" defer></script>
+
+  <!--Favicon-->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+</head>
+<body class="">
+    <div class="wrapper"><div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+    <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click;" style="padding-right: 3rem">
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@s">
+                
+                <li class="uk-active "><a style="font-size: 18px; text-transform: none"
+                        href="https://jaimeguti.github.io/TFG_WEB/"> Home </a></li>
+                
+                
+            </ul>
+
+            <a class="uk-navbar-toggle uk-hidden@s" uk-toggle="target: #sidenav" uk-navbar-toggle-icon href="#"></a>
+
+        </div>
+    </nav>
+</div>
+
+<div id="sidenav" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+
+        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+            
+            <li class="uk-active"><a style="font-size: 18px" href="https://jaimeguti.github.io/TFG_WEB/"> Home </a>
+            </li>
+            
+            
+        </ul>
+
+    </div>
+</div>
+
+
+<!-- Hexagon Stylesheet -->
+
+<link rel="stylesheet" href="/JaimeGuti/TFG_WEB/css/hexagon.min.css">
+
+<!-- Index -->
+
+<link rel="stylesheet" href="/JaimeGuti/TFG_WEB/css/index.min.css">
+
+<section>
+    <div class="uk-container uk-margin-xlarge-top uk-margin-xlarge-bottom uk-text-center">
+
+        <h1 class="uk-heading-large">Visualización de Señal en Realidad Virtual</h1>
+    </div>
+</section>
+
+<section class="uk-margin-large-top">
+    <div class="uk-container">
+        <div class="uk-text-center">
+            
+            <p class="uk-text-lead">Trabajo Fin de Grado</p> 
+            <p>Jaime Moraleda Gutiérrez</p>           
+            
+        </div>
+    </div>
+
+</section>
+
+
+
+
+
+<section class="uk-margin-large-bottom uk-margin-large-top">
+    <div class="uk-container">
+        <h1 class="uk-heading-line  uk-heading-medium"><span>Resumen</span></h1>
+        
+        <div>
+        <h3 class="uk-text-center uk-text-bold uk-margin-large-top"> Este Trabajo Fin de Grado consiste en la construcción 
+            de un sistema que permite la visualización de distintas señales y las operaciones básicas que se pueden aplicar 
+            sobre ellas mediante realidad virtual (VR) basado en tecnología A-Frame para la creación de escenas en 3D. 
+            El objetivo fundamental es hacer lo más sencillo posible la comprensión y aprendizaje de cada señal, así como los 
+            cambios que experimentan tras aplicarle una u otra operación, tanto gráficamente como matemáticamente. </h3>
+        <div class="uk-flex uk-flex-center">
+       
+        </div>
+        <p class="uk-text-center">This Thesis consists of the construction of a system that allows the visualization of different
+            signals and the basic operations that can be applied to them through virtual reality (VR) based
+            on A-Frame technology for the creation of 3D scenes. The main objective is to make it as easy
+            as possible to understand and learn the graphic part of each signal, as well as the changes they
+            undergo after applying one or another operation, both graphically and mathematically.</p>  
+        </div>
+        
+
+</section>
+
+
+
+
+
+
+
+<div id="modal_A_Frame" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">A-Frame</h2>
+        </div>
+        <p>Es una tecnologı́a que nos proporciona un entorno de programación web enfocado al desarrollo y uso de experiencias de realidad virtual (VR).</p>
+    </div>
+</div>
+
+<div id="modal_Three_js" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">Three.js</h2>
+        </div>
+        <p>Es una librerı́a basada en JavaScript que aprovecha las capacidades de HTML5 y WebGL.</p>
+    </div>
+</div>
+
+<div id="modal_HTML5" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">HTML5</h2>
+        </div>
+        <p>El documento que lee el navegador para poder visualizar una web está escrito en el lenguaje de marcado HTML.</p>
+    </div>
+</div>
+
+<div id="modal_JavaScript" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">JavaScript</h2>
+        </div>
+        <p>JavaScript es un lenguaje de programación utilizado principalmente para hacer páginas web interactivas en el lado del cliente.</p>
+    </div>
+</div>
+
+<div id="modal_DOM" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">DOM</h2>
+        </div>
+        <p>Las siglas DOM significan Document Object Model, o lo que es lo mismo, la estructura del documento HTML.</p>
+    </div>
+</div>
+
+<div id="modal_WebGL" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">WebGL</h2>
+        </div>
+        <p>API multiplataforma que se utiliza para crear gráficos 3D acelerados por hardware en un navegador web sin necesidad de descargar ni instalar ningún complemento.</p>
+    </div>
+</div>
+
+<div id="modal_WebXR" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">WebXR</h2>
+        </div>
+        <p>Conjunto de estándares que se utilizan para la representación de escenas 3D en hardware.</p>
+    </div>
+</div>
+
+<div id="modal_Realidad_Virtual__VR_" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">Realidad Virtual (VR)</h2>
+        </div>
+        <p>Es la creación y representación de un entorno de escenas y objetos simulados de apariencia real, generados informáticamente, que crea en el usuario la sensación de estar dentro de él.</p>
+    </div>
+</div>
+
+<div id="modal_Realidad_Aumentada__AR_" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">Realidad Aumentada (AR)</h2>
+        </div>
+        <p>Es el término que se usa para describir al conjunto de tecnologı́as que permiten que un usuario visualice una combinación entre el mundo fı́sico real a través de un dispositivo que le añade elementos digitales virtuales generados tecnológicamente.</p>
+    </div>
+</div>
+
+<div id="modal_Visual_Studio_Code" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">Visual Studio Code</h2>
+        </div>
+        <p>Editor de código fuente desarrollado por Microsoft y construido sobre el framework Electron.</p>
+    </div>
+</div>
+
+<div id="modal_GitHub" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">GitHub</h2>
+        </div>
+        <p>Es un servicio basado en la nube que aloja proyectos utilizando un sistema de control de versiones llamado Git.</p>
+    </div>
+</div>
+
+
+<section class="uk-margin-large-top uk-margin-large-bottom">
+    <div class="uk-container">
+        <h1 class="uk-heading-line uk-text-center uk-heading-medium"><span>Tecnologías utilizadas</span></h1>
+
+        <p class="uk-text-center uk-text-lead"><i>Haga clic en las siguientes imágenes para obtener más información.</i></p>
+        <div class="uk-child-width-1-6@l uk-child-width-1-1@m uk-child-width-1-1@s uk-text-center uk-flex-center"
+            uk-grid>
+            
+            <div class="imagemargin">
+                <img class="contain skills" src="./images/A-Frame_logo.png" style="cursor: pointer"
+                    uk-toggle="target: #modal_A_Frame">
+                <h4>A-Frame</h4>
+            </div>
+            
+            <div class="imagemargin">
+                <img class="contain skills" src="./images/Threejs_logo.png" style="cursor: pointer" 
+                    uk-toggle="target: #modal_Three_js">
+                <h4>Three.js</h4>
+            </div>
+            
+            <div class="imagemargin">
+                <img class="contain skills" src="./images/HTML5_logo.png" style="cursor: pointer"
+                    uk-toggle="target: #modal_HTML5">
+                <h4>HTML5</h4>
+            </div>
+            
+            <div class="imagemargin">
+                <img class="contain skills" src="./images/JavaScript_logo.png" style="cursor: pointer"
+                    uk-toggle="target: #modal_JavaScript">
+                <h4>JavaScript</h4>
+            </div>
+            
+            <div class="imagemargin">
+                <img class="contain skills" src="./images/DOM_logo.png" style="cursor: pointer"
+                    uk-toggle="target: #modal_DOM">
+                <h4>DOM</h4>
+            </div>
+            
+            <div class="imagemargin">
+                <img class="contain skills" src="./images/WebGL_logo.png" style="cursor: pointer"
+                    uk-toggle="target: #modal_WebGL">
+                <h4>WebGL</h4>
+            </div>
+            
+            <div class="imagemargin">
+                <img class="contain skills" src="./images/WebXR_logo.png" style="cursor: pointer"
+                    uk-toggle="target: #modal_WebXR">
+                <h4>WebXR</h4>
+            </div>
+            
+            <div class="imagemargin">
+                <img class="contain skills" src="./images/VR_logo.png" style="cursor: pointer"
+                    uk-toggle="target: #modal_Realidad_Virtual__VR_">
+                <h4>Realidad Virtual (VR)</h4>
+            </div>
+            
+            <div class="imagemargin">
+                <img class="contain skills" src="./images/AR_logo.png" style="cursor: pointer"
+                    uk-toggle="target: #modal_Realidad_Aumentada__AR_">
+                <h4>Realidad Aumentada (AR)</h4>
+            </div>
+            
+            <div class="imagemargin">
+                <img class="contain skills" src="./images/VSCode_logo.png" style="cursor: pointer"
+                    uk-toggle="target: #modal_Visual_Studio_Code">
+                <h4>Visual Studio Code</h4>
+            </div>
+            
+            <div class="imagemargin">
+                <img class="contain skills" src="./images/GitHub_logo.png" style="cursor: pointer"
+                    uk-toggle="target: #modal_GitHub">
+                <h4>GitHub</h4>
+            </div>
+            
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+<section class="uk-margin-large-bottom">
+    <div class="uk-container">
+        <h1 class="uk-heading-line  uk-heading-medium"><span>Imágenes</span></h1>
+
+        <div class="uk-child-width-1-2@m uk-child-width-1-2  uk-text-center uk-flex-center" uk-grid
+            style="padding-left: 20px; padding-right: 20px">
+
+            
+            <div>
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                        <img class="contain experience" src="./images/Individual.png" style="padding: 20px">
+                    </div>
+                    <div class="uk-card-body" style="padding: initial">
+                        <div style="height: 5em">
+                            <h3 class="uk-card-title uk-heading-small">Escenario Individual</h3>
+                        </div>
+                        <p style="height: 4em">Versión de Escritorio</p>
+                        <!-- <p>Escenario Individual</p> -->
+                    </div>
+                </div>
+            </div>
+
+            
+            <div>
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                        <img class="contain experience" src="./images/Horizontal.png" style="padding: 20px">
+                    </div>
+                    <div class="uk-card-body" style="padding: initial">
+                        <div style="height: 5em">
+                            <h3 class="uk-card-title uk-heading-small">Escenario Horizontal</h3>
+                        </div>
+                        <p style="height: 4em">Versión de Escritorio</p>
+                        <!-- <p>Escenario Horizontal</p> -->
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                        <img class="contain experience" src="./images/Vertical.png" style="padding: 20px">
+                    </div>
+                    <div class="uk-card-body" style="padding: initial">
+                        <div style="height: 5em">
+                            <h3 class="uk-card-title uk-heading-small">Escenario Vertical</h3>
+                        </div>
+                        <p style="height: 4em">Versión de Escritorio</p>
+                        <!-- <p>Escenario Vertical</p> -->
+                    </div>
+                </div>
+            </div>
+            
+       
+            <div>
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                        <img class="contain experience" src="./images/VR.png" style="padding: 20px">
+                    </div>
+                    <div class="uk-card-body" style="padding: initial">
+                        <div style="height: 5em">
+                            <h3 class="uk-card-title uk-heading-small">Escenario Realidad Virtual (VR)</h3>
+                        </div>
+                        <p style="height: 4em">Versión de Realidad Virtual (VR)</p>
+                        <!-- <p>Escenario Realidad Virtual (VR)</p> -->
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        
+</section>
+
+
+
+
+
+
+
+
+<section class="uk-margin-large-top uk-margin-medium-bottom">
+    <div class="uk-container">
+        <h1 class="uk-heading-line  uk-heading-medium"><span>Vídeos</span></h1>
+
+        <div class="uk-child-width-1-3@l uk-child-width-1-6@m uk-child-width-1-6@s uk-child-width-1-4 uk-text-center uk-flex-center"
+             uk-grid >
+            
+
+            <div>
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                        <video src="./resources/IndividualPulso.mp4" type="video/mp4" style="padding: 20px" controls>
+                            Lo sentimos. Este vídeo no puede reproducirse en este navegador. 
+                        </video>
+                    </div>
+                    <div class="uk-card-body" style="padding: initial">
+                        <div style="height: 5em">
+                            <h3 class="uk-card-title uk-heading-small">Escenario Individual</h3>
+                        </div>
+                        <p style="height: 4em">Versión de Escritorio</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                        <video src="./resources/Horizontal.mp4" type="video/mp4" style="padding: 20px" controls>
+                            Lo sentimos. Este vídeo no puede reproducirse en este navegador.
+                        </video>
+                    </div>
+                    <div class="uk-card-body" style="padding: initial">
+                        <div style="height: 5em">
+                            <h3 class="uk-card-title uk-heading-small">Escenario Horizontal</h3>
+                        </div>
+                        <p style="height: 4em">Versión de Escritorio</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                        <video src="./resources/VR_comp.mp4" type="video/mp4" width="250px" height="108px" style="padding: 20px" controls>
+                            Lo sentimos. Este vídeo no puede reproducirse en este navegador.
+                        </video>
+                    </div>
+                    <div class="uk-card-body" style="padding: initial">
+                        <div style="height: 5em">
+                            <h3 class="uk-card-title uk-heading-small">Escenario Realidad Virtual (VR)</h3>
+                        </div>
+                        <p style="height: 4em">Versión de Realidad Virtual (VR)</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="uk-margin-large-top uk-margin-medium-bottom">
+    <div class="uk-container">
+        <h1 class="uk-heading-line uk-heading-medium"><span>Recursos del Proyecto</span></h1>
+
+        <div class="uk-child-width-1-6@l uk-child-width-1-3@m uk-child-width-1-3@s uk-child-width-1-2 uk-text-center uk-flex-center"
+            uk-grid uk-height-match="target: > div > h4">
+            
+            <div class="imagemargin">
+                <a href="./resources/TFG_JaimeMoraledaGutiérrez.pdf" target="_blank" style="cursor: pointer">
+                    <img class="contain certs" src="./images/PDF_logo.png">
+                </a>
+                <h4>Visualización de Señal en Realidad Virtual</h4>
+                <p>Memoria en formato PDF</p>
+            </div>
+
+            <div class="imagemargin">
+                <a href="https://github.com/JaimeGuti/TFG" target="_blank" style="cursor: pointer">
+                    <img class="contain certs" src="./images/Cod_logo.png">
+                </a>
+                <h4>Código fuente</h4>
+                <p>Repositorio GitHub</p>
+            </div>
+
+            <div class="imagemargin">
+                <a href="https://github.com/JaimeGuti/TFG_DEMOS" target="_blank" style="cursor: pointer">
+                    <img class="contain certs" src="./images/Pulso.png">
+                </a>
+                <h4>Demos de los escenarios</h4>
+                <p>Repositorio github.io</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="uk-margin-xlarge-bottom">
+    <div class="uk-container">
+
+        <h1 class="uk-heading-line uk-heading-medium  uk-margin-large-bottom"><span>Formación</span></h1>
+
+
+        <div class=" uk-grid-large uk-child-width-1-3@s uk-child-width-1  uk-text-center uk-flex-center" uk-grid
+            style="padding-left: 20px; padding-right: 20px">
+
+            
+            <div>
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                        <img class="contain experience" src="https://pbs.twimg.com/profile_images/1546375787263262720/nZh7tNKC_400x400.jpg" style="padding: 20px">
+                    </div>
+                    <div class="uk-card-body" style="padding-top: 0">
+                        <div style="height: 5em">
+                            <h3 class="uk-card-title">Universidad Rey Juan Carlos</h3>
+                        </div>
+                        <p style="height: 4em">Ingeniería en Sistemas Audiovisuales y Multimedia</p>
+                        <p>Escuela Técnica Superior de Ingeniería de Telecomunicación</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+</section>
+
+
+
+
+    </div>
+<footer class="footer">
+  <div class="uk-container">
+
+    <div class="uk-grid-small uk-child-width-1-4@m uk-text-center uk-flex-center uk-margin-medium-bottom" uk-grid>
+      <div class="uk-margin-small-bottom">
+        <h5 class="uk-margin-small-bottom">GitHub</h5>
+        <a href="https://github.com/JaimeGuti/TFG_DEMOS" target="_blank">github.com/JaimeGuti/TFG_DEMOS</a>
+
+      </div>
+      <div>
+        <h5 class="uk-margin-small-bottom">ETSIT</h5>
+          <div uk-lightbox>
+            <a href="https://www.urjc.es/etsit" target="_blank" data-caption="ETSIT"
+               data-type="iframe">URJC ETSIT</a>
+          </div>
+      </div>
+    </div>
+
+
+    <div class="footer-copyright uk-text-center" style="padding-bottom: 1rem">
+      <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1.2em;
+  width: 1.2em;" alt="Creative Commons">
+      <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1.2em;
+  width: 1.2em;" alt="CC-BY">
+      2023
+      Jaime Moraleda Gutiérrez
+    </div>
+  </div>
+</footer>
+
+
+<!-- JS Plugins -->
+
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
+
+</body>
+</html>
